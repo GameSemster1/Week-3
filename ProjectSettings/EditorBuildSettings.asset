@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/4-level-1.unity
+    path: Assets/Scenes/Erel/4-level-1.unity
     guid: 7b9c106c66bcfde438f75b0322428201
   - enabled: 1
-    path: Assets/Scenes/4-level-2.unity
+    path: Assets/Scenes/Erel/4-level-2.unity
     guid: 746da71bf020a504bb92b7b3fd74cf3e
   m_configObjects: {}
