@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToPress: 32
-  prefabToSpawn: {fileID: 206225842732292031, guid: 1064f1e6fd4430a48ae8a63513c527b4,
+  prefabToSpawn: {fileID: 1174817094008524727, guid: 330a49d44f72abd4d9288ad01e19e350,
     type: 3}
   velocityOfSpawnedObject: {x: 0, y: 10, z: 0}
   scoreField: {fileID: 6299144752030254543}

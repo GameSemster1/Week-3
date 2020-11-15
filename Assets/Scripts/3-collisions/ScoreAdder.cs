@@ -19,7 +19,7 @@ public class ScoreAdder : MonoBehaviour
 			GAME_STATUS.playerScore = scoreField.GetNumber(); // Keep the score for the next level
 
 			Debug.Log("Destroying");
-			Destroy(other);
+			Destroy(other.gameObject);
 			Destroy(gameObject);
 		}
 	}

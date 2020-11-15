@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab63d9ef6fc24b4792a19faafaad16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 7837289214103786378, guid: 6be821e6b7bcb2f4880f32521dc969c6,
+  prefabToSpawn: {fileID: 6330176388195479018, guid: d4f2b6d374add3840b5864526c62d127,
     type: 3}
   velocityOfSpawnedObject: {x: 0, y: -2, z: 0}
   minTimeBetweenSpawns: 0.5
