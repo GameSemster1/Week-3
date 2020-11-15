@@ -18,7 +18,7 @@ public class ScreenEdge : MonoBehaviour
 
 
 	// Start is called before the first frame update
-	void Awake()
+	private void Awake()
 	{
 		var cam = Camera.main;
 		if (cam == null)
