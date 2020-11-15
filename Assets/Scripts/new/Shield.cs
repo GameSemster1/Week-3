@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,12 @@ public class Shield : MonoBehaviour
 	public Renderer shield;
 	public float maxPower, minPower;
 
+	public string pickupTag = "Shield";
+
 	private float startTime;
 	private bool shieldOn = false;
 
-	public bool turnOn = false;
+	private bool turnOn = false;
 
 	private Collider2D col;
 
@@ -50,5 +53,14 @@ public class Shield : MonoBehaviour
 	{
 		shieldOn = true;
 		startTime = Time.time;
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag(pickupTag))
+		{
+			TurnOn();
+			Destroy(other.gameObject);
+		}
 	}
 }

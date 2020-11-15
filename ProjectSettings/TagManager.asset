@@ -8,6 +8,7 @@ TagManager:
   - Laser
   - Wall
   - heart
+  - Shield
   layers:
   - Default
   - TransparentFX

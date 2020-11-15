@@ -938,8 +938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5018b277a889c88498e42855d3fa44cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldTime: 5
+  shieldTime: 10
   shield: {fileID: 6299144752185079869}
   maxPower: 0.8
   minPower: 0.3
-  turnOn: 1
+  pickupTag: Shield

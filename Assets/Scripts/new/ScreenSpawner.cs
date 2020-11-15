@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopScreenSpawner : MonoBehaviour
+public class ScreenSpawner : MonoBehaviour
 {
-	public Mover obj;
-	public float offset, zOffset;
+	public GameObject obj;
+	public float zOffset;
+	public Vector3 offset;
 
-	[SerializeField] Vector3 velocityOfSpawnedObject;
+	[Tooltip("Lower left corner of the screen box. Values between 0 and 1 (0,0 -> bottom left, 1,1 -> top right.")]
+	public Vector2 screenLocationMin;
+
+	[Tooltip("The upper right corner of the screen box. Values between 0 and 1 (0,0 -> bottom left, 1,1 -> top right.")]
+	public Vector2 screenLocationMax;
 
 	[Tooltip("Minimum time between consecutive spawns, in seconds")] [SerializeField]
 	float minTimeBetweenSpawns = 1f;
@@ -22,7 +27,7 @@ public class TopScreenSpawner : MonoBehaviour
 	float maxAngle = 15f;
 
 
-	private Vector3 start, end;
+	private Vector3 min, max;
 
 	// Start is called before the first frame update
 	private void Awake()
@@ -31,13 +36,13 @@ public class TopScreenSpawner : MonoBehaviour
 		if (cam == null)
 			return;
 
-		Vector3 topRight = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, cam.pixelHeight, zOffset)) +
-		                   Vector3.up * offset;
-		Vector3 topLeft = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, zOffset)) +
-		                  Vector3.up * offset;
-
-		start = topLeft;
-		end = topRight;
+		max = cam.ScreenToWorldPoint(
+			new Vector3(screenLocationMin.x * cam.pixelWidth,
+				screenLocationMin.y * cam.pixelHeight,
+				zOffset)) + offset;
+		min = cam.ScreenToWorldPoint(new Vector3(screenLocationMax.x * cam.pixelWidth,
+			screenLocationMax.y * cam.pixelHeight,
+			zOffset)) + offset;
 	}
 
 	void Start()
@@ -51,10 +56,9 @@ public class TopScreenSpawner : MonoBehaviour
 		{
 			float timeBetweenSpawns = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
 			yield return new WaitForSeconds(timeBetweenSpawns);
-			Vector3 positionOfSpawnedObject = LerpByPercent(start, end, Random.value);
+			Vector3 positionOfSpawnedObject = RandomInBox(min, max);
 			var rotationOfSpawnedObject = Quaternion.Euler(0, 0, (maxAngle - minAngle) * Random.value + minAngle);
 			var newObject = Instantiate(obj, positionOfSpawnedObject, rotationOfSpawnedObject);
-			newObject.SetVelocity(velocityOfSpawnedObject);
 		}
 	}
 
@@ -62,5 +66,13 @@ public class TopScreenSpawner : MonoBehaviour
 	{
 		Vector3 p = x * (b - a) + a;
 		return p;
+	}
+
+	private static Vector3 RandomInBox(Vector3 min, Vector3 max)
+	{
+		var x = Random.Range(min.x, max.x);
+		var y = Random.Range(min.y, max.y);
+		var z = Random.Range(min.z, max.z);
+		return new Vector3(x, y, z);
 	}
 }
