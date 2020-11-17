@@ -6,22 +6,44 @@ using UnityEngine;
 
 public class RoundScreen : MonoBehaviour
 {
-	[Tooltip("Speed of movement, in meters per second")]
-	[SerializeField] float speed;
-    
-	[SerializeField] float right;
-	[SerializeField] float left;
-	[SerializeField] float up;
-	[SerializeField] float down;
+	[Tooltip("Speed of movement, in meters per second")] [SerializeField]
+	float speed;
 
-	void Update() {
-		float horizontal = Input.GetAxis("Horizontal"); // +1 if right arrow is pushed, -1 if left arrow is pushed, 0 otherwise
-		float vertical = Input.GetAxis("Vertical");     // +1 if up arrow is pushed, -1 if down arrow is pushed, 0 otherwise
+	public float screenOffset = 1f;
+
+	float right;
+	float left;
+	float up;
+	float down;
+
+	private void Start()
+	{
+		var cam = Camera.main;
+
+		if (cam == null)
+			return;
+
+		Vector3 max = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, cam.pixelHeight, 0));
+		Vector3 min = cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
+
+		left = min.x - screenOffset;
+		right = max.x + screenOffset;
+
+		up = max.y + screenOffset;
+		down = min.y - screenOffset;
+	}
+
+	void Update()
+	{
+		float
+			horizontal =
+				Input.GetAxis("Horizontal"); // +1 if right arrow is pushed, -1 if left arrow is pushed, 0 otherwise
+		float vertical = Input.GetAxis("Vertical"); // +1 if up arrow is pushed, -1 if down arrow is pushed, 0 otherwise
 		Vector3 movementVector = new Vector3(horizontal, vertical, 0) * speed * Time.deltaTime;
 		transform.position += movementVector;
 
-        float x = transform.position.x;
-        float y = transform.position.y;
+		float x = transform.position.x;
+		float y = transform.position.y;
 
 		if (x > right)
 		{
