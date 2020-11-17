@@ -1,3 +1,13 @@
+## Changes:
+ - We've added a Shiled component that disables the collider for a given amount of time after touching a shield pickup, and a object that spawns shiel pickups.
+ - We've added limits KeyboardMove that will stop the player from exiting the map.
+ - We've added a copy of KeyboardMove that moves the player from one side of the map to the other if he exits the map (roud world).
+ - We've added lives to the game. The player now loses only after he is hit three times rather than one.
+
+
+
+
+
 # Unity week 2: Formal elements
 
 A project with step-by-step scenes illustrating some of the formal elements of game development in Unity, including: 
