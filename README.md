@@ -1,8 +1,10 @@
 ## Changes:
- - We've added a Shiled component that disables the collider for a given amount of time after touching a shield pickup, and a object that spawns shiel pickups.
- - We've added limits KeyboardMove that will stop the player from exiting the map.
- - We've added a copy of KeyboardMove that moves the player from one side of the map to the other if he exits the map (roud world).
- - We've added lives to the game. The player now loses only after he is hit three times rather than one.
+ - We've added a Shiled component that disables the collider for a given amount of time after touching a shield pickup, and a object that spawns shiel pickups (Assets/Scripts/new/Shield.cs).
+ - We've added limits KeyboardMover that will stop the player from exiting the map (Assets/Scripts/1-movers/KeyboardMover.cs).
+ - We've added a copy of KeyboardMove that moves the player from one side of the map to the other if he exits the map (roud world) (Assets/Scripts/1-movers/RoundScreen.cs).
+ - We've added lives to the game. The player now loses only after he is hit three times rather than one (Assets/Scripts/3-collisions/DestroyOnTrigger2D.cs).
+ - We've added an object that destroys the saucers and lazers when they leave the map (Assets/Scripts/new/ScreenEdge.cs).
+ - We've changed the saucers' spawning to always be at the top of the screen ,no matter the resolution (Assets/Scripts/new/ScreenSpawner.cs).
 
 
 
